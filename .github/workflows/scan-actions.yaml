@@ -16,7 +16,7 @@ jobs:
       - name: Setup golang
         uses: actions/setup-go@v2
         with:
-          go-version: 1.18
+          go-version: 1.19
 
       - name: Cache Go
         id: cache-go
@@ -31,9 +31,9 @@ jobs:
           GO111MODULE: on
         run: |
           go get -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
-          go get -v github.com/projectdiscovery/httpx/cmd/httpx
-          go get -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
-          go get -u github.com/tomnomnom/anew
+          go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+          go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+          go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
         shell: bash
 
       - name: Running Scanner
